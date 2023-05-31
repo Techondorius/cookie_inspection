@@ -18,8 +18,9 @@ func main() {
 	}))
 
 	g.GET("/setcookie", func(c *gin.Context) {
-		c.SetSameSite(http.SameSiteNoneMode)
-		c.SetCookie("gin_cookie", "test", 3600, "/", "192.168.10.103", true, true)
+		c.SetSameSite(http.SameSiteLaxMode)
+		c.SetCookie("gin_cookie", "test", 3600, "/api", "localhost", false, true)
+		c.SetCookie("gin_cookie2", "test", 3600, "/api", "localhost", false, true)
 		c.JSON(200, gin.H{"msg": "OK"})
 	})
 
